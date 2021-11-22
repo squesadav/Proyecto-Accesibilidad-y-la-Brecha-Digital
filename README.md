@@ -1,2 +1,9 @@
 # Proyecto-Accesibilidad-y-la-Brecha-Digital
-Proyecto Final del curso de Computación y Sociedad
+
+Instituto Tecnológico de Costa Rica
+Computación y Sociedad GR 40
+Grupo Aranjuez
+
+Proyecto Final: Accesibilidad y la Brecha Digital
+
+Segundo Semestre, 2021
