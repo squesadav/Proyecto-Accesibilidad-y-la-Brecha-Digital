@@ -43,6 +43,9 @@
 							<li class="nav-item">
 								<a class="nav-link" href='conceptos.html'>Conceptos</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link" href='referencias.html'>Referencias</a>
+							</li>
 						</ul>	
 					</div>
 				</div>
@@ -73,7 +76,7 @@
 						de identificar, y también la herramienta WAVE, que sirve para evaluar el nivel de accesibilidad
 						de una página Web existente. Más adelante se entrará en detalle con estas herramientas.
 					</p>
-					<h2>1. Desarrollo Web accesible</h2>
+					<h2 id="1">1. Desarrollo Web accesible con WCAG 2.1</h2>
 					<p>
 						Al desarrollar una página Web, lo más importante es tener en mente implementar
 						la accesibilidad desde antes de comenzar a crearla y durante todo su desarrollo.
@@ -111,7 +114,7 @@
 						A continuación se mostrarán los puntos más importantes incluidos en estos 4 principios,
 						sus técnicas y recomendaciones así como también errores que no se deben cometer.
 					</p>
-					<h3>1.1. Perceptible</h3>
+					<h3 id="1.1">1.1. Perceptible</h3>
 					<p>
 						Todos los componentes de una página Web deben poder ser identificados y entendidos
 						por todos los usuarios. Muchos adultos tienen dificultades con la visión, y letras
@@ -121,7 +124,7 @@
 						de la página. Además, otros tienen dificultades auditivas, por lo que demostrar
 						información únicamente por audio o videos sin subtítulos no es viable.
 					</p>
-					<h4>1.1.1. Alternativas textuales</h4>
+					<h4 id="1.1.1">1.1.1. Alternativas textuales</h4>
 					<p>
 						Todo contenido de una página que no se basa en texto debe tener alternativas textuales
 						que pueden ser traducidos por el medio de elección del usuario. El ejemplo más claro de
@@ -130,6 +133,245 @@
 						el elemento <code>img</code>, usado para introducir imagenes a una página, contiene el
 						atributo <code>alt</code>. El texto ingresado a dicho atributo servirá de texto alternativo
 						para la imagen.
+					</p>
+					<p>
+						También pueden existir algunos componentes que, con solo el tipo de elemento y contexto
+						en la página, además de no tener atributos adicionales de texto alternativo, no logran
+						mostrar su función a usuarios que no pueden verlos. Un ejemplo de esto es una scrollbar
+						personalizada cuyo elemento es un <code>div</code>. Para ello se pueden utilizar atributos
+						ARIA, como el atributo <code>role</code> para declarar el rol de dicho elemento, o el 
+						atributo <code>aria-label</code> para agregar un texto que servirá para describir la
+						función o significado del elemento. En la sección <a href="#2">2. Atributos y Semántica ARIA</a>
+						se explica de mejor forma el uso de ARIA para desarrollar páginas Web.
+					</p>
+					<h4 id="1.1.2">1.1.2. Multimedia</h4>
+					<p>
+						En casos en que se desee agregar un audio o un video a la página, estos deben venir
+						con algún tipo de alternativa para personas que no pueden escuchar o ver dicho contenido.
+						Si solo se trata de audio, debe existir algún tipo de transcripción o subtítulos en la página 
+						o un enlace a ello. Si se trata de un video, este debe venir con subtítulos claros y descriptivos
+						de lo que se dice y suena en el video, y también una transcripción o audio descriptivo de lo
+						que se ve y escucha en dicho video. En caso de ser una transmisión en vivo, es recomendable
+						implementar alguna tecnología que transcriba automáticamente su contenido.
+					</p>
+					<h4 id="1.1.3">1.1.3. Adaptabilidad y propósito</h4>
+					<p>
+						No todos los usuarios van interactuar con una página de la misma forma. Unos pueden usar
+						lectores de pantalla, otros pueden cambiar el tamaño del contenido y otros pueden 
+						simplificar el diseño con ayuda de alguna tecnología. Es importante que la página sea
+						accesible para percibirla de cualquier forma y se adapte a todo sin perder contenido,
+						cambiar su propósito o cambiar su orden.
+					</p>
+					<p>
+						Si el diseño visual de la página, su orden y secuencia es importante para comprender
+						correctamente la información de la misma, debe ser posible entenderla de igual forma
+						sin la necesidad de verla como se diseña originalmente. Es importante hacer un muy
+						buen uso de HTML, sus elementos, atributos, orden y estructura para que esto sea posible.
+					</p>
+					<p>
+						Debe ser posible aumentar el tamaño de la página o cambiar su orientación sin que se 
+						pierda información de la misma o sea muy confusa. La página debe ser sensible a adaptarse
+						a cualquier dispositivo y tamaño. Varias prácticas de HTML permiten hacer una página Web
+						"responsive". También existen herramientas útiles que facilitan diseñar páginas de esta
+						forma, como por ejemplo <a href="https://getbootstrap.com/">Bootstrap</a>.
+					</p>
+					<p>
+						En la medida de lo posible, se deben usar los elementos por defecto de HTML según su
+						propósito y estructura. Por ejemplo, usar <code>h1</code> para headers principales,
+						usar <code>main</code> para indicar el contenido principal de la página, usar
+						<code>nav</code> para identificar algún tipo de barra de navegación en la página,
+						y demás. Además, es importante ordenar estos elementos de manera que la estructura
+						no sea confusa y que el DOM siga el diseño visual de la página. En caso de que
+						no exista un elemento de HTML que identifique correctamente algún contenido
+						personalizado, es posible usar atributos ARIA para identificar correctamente el
+						rol que cumple dicho elemento. El objetivo de todo esto es para que tecnologías
+						asistivas logren comprender correctamente la estructura de la página y el propósito
+						de todos sus elementos para que no exista ninguna confusión.
+					</p>
+					<p>
+						Por último, no se debe evidenciar el propósito de algún elemento únciamente de manera 
+						visual. Un ejemplo de esto es poner un fondo de color rojo a un mensaje de error, sin 
+						explicar de ninguna otra manera que es un error. Es importante agregar texto adicional 
+						o algún otro mecanismo que sirva para identificar el significado del elemento. En el 
+						caso del ejemplo anterior, basta con poner "ERROR" o algún texto similar en el mensaje.
+					</p>
+					<h4 id="1.1.4">1.1.4. Visibilidad</h4>
+					<p>
+						Las dificultades visuales en adultos mayores no tratan solo de ceguera completa.
+						Existen personas con visión deficiente, daltonismo, percepción reducida y demás.
+						Estas personas sí llegan a utilizar las páginas de manera visual, pero necesitan
+						que sean fáciles de ver y entender.
+					</p>
+					<p>
+						El uso de colores debe ser muy cuidadoso. El contraste entre colores debe ser
+						suficientemente alto para que todo tipo de persona pueda diferenciarlos. Al agregar
+						texto, este debe tener color que haga un gran contraste con respecto al color de su
+						fondo, de lo contrario algunas personas tendrán dificultades en leerlo. El
+						<a href="https://webaim.org/resources/contrastchecker/">Contrast Checker</a> de WebAIM
+						es una útil herramienta que evalúa el contraste de colores para que sean accesibles.
+					</p>
+					<p>
+						Siguiendo con el tema del texto, este debe ser debidamente legible. Se deben usar
+						tipografías que sean fáciles de leer, y en la medida de lo posible, no usar texto
+						demasiado pequeño. Además, debe ser posible agrandar este texto en el navegador
+						sin que exista una pérdida en el contenido y estructura de la página. Por último, como
+						recomendaciones adicionales, el texto debe tener una separación entre palabras, líneas
+						y párrafos lo suficientemente amplia para que no sea confuso para ciertas personas.
+					</p>
+					<p>
+						Por último, en la medida de lo posible, no se deben usar imagenes que solo contienen
+						texto. En estos casos es mejor escribir el texto directamente en la página para que
+						pueda alterarse de la forma que el usuario desee.
+					</p>
+					<h3 id="1.2">1.2. Operable</h3>
+					<p>
+						Todos los elementos, componentes, formularios, navegación y demás deben poderse
+						usar por todas las personas. No todos interactúan con la página de la misma forma,
+						ni usan los mismos dispositivos de entrada. Algunos solo usan teclado, otros utilizan
+						la voz y otros pantallas táctiles. También, todos deben poder entender cómo utilizar
+						la página, ubicarse en ella y navegar sin confusión ni problema alguno.
+					</p>
+					<p>
+						Adicionalmente, es importante considerar que personas con trastornos como la epilepsia
+						van a interactuar con la página y esta no debe atentar contra su salud. No se deben utilizar
+						secuencias de imágenes rápidas, luces parpadeantes o animaciones rápidas que puedan causar
+						reacciones físicas peligrosas en estas personas.
+					</p>
+					<h4 id="1.2.1">1.2.1. Accesibilidad con el teclado</h4>
+					<p>
+						Muchos adultos mayores no tienen la destreza suficiente para usar el mouse, o no
+						lo usan por problemas de visión, o en general prefieren utilizar únicamente el teclado
+						como dispositivo de entrada. Las páginas Web accesibles deben permitir interactuar con
+						ella en su totalidad únicamente a través de un teclado. En general, esto puede alcanzarse
+						con un buen diseño con HTML y la estructura del DOM, utilizando los debidos elementos en
+						cada caso.
+					</p>
+					<p>
+						Además, no deben existir "keyboard traps", que son elementos o componentes que, al recibir
+						el enfoque del teclado, no tienen ninguna forma de cambiar dicho enfoque a través de únicamente
+						el uso del teclado.
+					</p>
+					<h4 id="1.2.2">1.2.2. Tiempo</h4>
+					<p>
+						Algunas páginas tendrán algún tiempo límite para percibir un contenido o para
+						llenar un formulario. En la medida de lo posible, no se debe limitar el tiempo en
+						que un usuario puede usar un componente de la página, ya que muchos adultos mayores
+						necesitan tomarse su tiempo para utilizarlo. En caso de que el tiempo límite sea
+						necesario, el usuario debe saber que existe y tener la posibilidad de 
+						desactivarlo o extenderlo. Cuando no es posible cambiar este tiempo límite, como
+						en un timeout en la compra de un producto, como mínimo se debe comunicar de forma 
+						clara al usuario de dicho tiempo límite y si implica alguna périda de datos en la 
+						sesión.
+					</p>
+					<h4 id="1.2.3">1.2.3. Navegación e input</h4>
+					<p>
+						Todos los usuarios deben tener la posibilidad de navegar en la página de manera
+						sencilla y comprensible, sin importar la forma en que lo hagan. También, todo tipo
+						de dispositivo de entrada debe ser aceptado.
+					</p>
+					<p>
+						Para usuarios que no usan el mouse para navegar, una técnica bastante útil es agregar
+						un botón u opción para navegar directamente al contenido u otra sección importante de
+						la página, sin necesidad de recorrer por componentes como la barra de navegación o el
+						encabezado. Puede hacer la prueba con esta misma página, si al ingresar a ella presiona
+						tabulador podrá acceder a botones ocultos para navegar por la misma (es necesario que
+						el enfoque del telcado esté en el inicio de la página). Además, cuando no se utiliza mouse
+						el orden del enfoque del dispositivo de entrada debe tener una secuencia con sentido. No
+						debe saltar entre componentes distantes ni en orden regresivo.
+					</p>
+					<p>
+						El texto de la página debe ayudar a saber en qué lugar de ella se encuentra y en general
+						proporcionar buena navegabilidad. Se deben usar elementos de headings con sentido para
+						encabezados o títulos, y estos deben tener un texto que logren identificar correctamente
+						la sección de dicho encabezado. Además, enlaces e hipervínculos deben tener un texto
+						que identifiquen claramente por sí solos hacia dónde se dirigen.
+					</p>
+					<p>
+						En páginas que contengas muchas secciones, aportar una tabla de contenidos con enlaces
+						a todas sus secciones es muy útil para una navegabilidad óptima.
+					</p>
+					<h3 id="1.3">1.3. Comprensible</h3>
+					<p>
+						Todo usuario debe tener la posibilidad de entender correctamente el contenido de la
+						página Web, incluyendo el texto y componentes de la interfaz.
+					</p>
+					<h4 id="1.3.1">1.3.1. Legibilidad</h4>
+					<p>
+						Primeramente, la página en general así como también su contenido deben tener
+						identificados el lenguaje en el que están escritos. Así, tecnologías que asisten
+						al usuario para percibir una página saben en qué idioma deben reproducirla. Para ello
+						se puede usar el atributo <code>lang</code> de HTML para identificar el idioma
+						de la página o el contenido. En caso de que sea posible que usuarios de otros idiomas
+						interactúen con la página, es útil que exista la opción de cambiar de idioma.
+					</p>
+					<p>
+						También en casos donde se usen palabras o abreviaturas desconocidas es recomendable
+						adjuntas alguna descripción de texto antes o después que explique su significado.
+						Cuando las palabras tengan una pronunciación ambigua también se recomienda escribir
+						dicha pronunciación.
+					</p>
+					<h4 id="1.3.2">1.3.2. Predictabilidad</h4>
+					<p>
+						Las páginas Web deben aparecer y operar en formas predecibles para todos los usuarios.
+						La idea es que la interacción la página no sea confusa y se asemeje a experiencas pasadas
+						con otras páginas. La estructura de la página es vital para esto, y dar un buen orden
+						a los elementos y funciones claras ayudan al usuario a comprender cómo usar la página.
+					</p>
+					<p>
+						Un cambio de contexto, o cambios en la página que alteran la forma en la que se pueda
+						percibir o la información en ella, no deben suceder de manera impredecible. Darle el
+						enfoque a un elemento o algún input no deben cambiar el contexto sin antes avisarle
+						al usuario de dicha interacción. 
+					</p>
+					<p>
+						Además, en un sitio Web con varias páginas, navegar entre ellas debe ser predecible.
+						Todas las páginas deben seguir elementos y mecanismos de navegación consistentes en
+						el mismo orden, por ejemplo proporcionar una barra de navegación en todas las páginas.
+						También, elementos que se repiten en varias páginas deben identificarse de la misma manera
+						y cumplir la misma función.
+					</p>
+					<h4 id="1.3.3">1.3.3. Asistencia en la interacción</h4>
+					<p>
+						Se deben proporcionar ayudas para que los usuarios logren interactuar correctamente
+						con el sistema, principalmente en caso de que tengan que llenar algún formulario.
+					</p>
+					<p>
+						Si ocurre algún error con la entrada que ingresó un usuario, como correo electrónico
+						no existente, el sistema debe avisar claramente y textualmente al usuario del error y
+						de cómo evitarlo. Se pueden utilizar atributos de ARIA para identificar de mejor forma
+						qué debe ir en cada entrada de un formulario, así como también identificar que
+						campos son requeridos.
+					</p>
+					<p>
+						En general, cuando se necesite de la interacción y entradas por parte de un usuario
+						se deben proporcionar instrucciones suficientemente claras para que no exista ningún tipo
+						de error, y el sistema debe captar excepciones cuando los datos ingresados no son correctos.
+					</p>
+					<h3 id="1.4">1.4. Robusto</h3>
+					<p>
+						Este último principio es bastante directo y simple. Toda página Web accesible debe
+						ser robusta y compatible para poder se interpretada por cualquier agente, como
+						tecnologías de asistencia. En general, para que una página basta con que
+						sea programada de la mejor manera, ayudándose de todo lo que HTML y ARIA pueden proporcionar.
+					</p>
+					<p>
+						Se debe programar el HTML siguiendo la especificación y los estándares del mismo. Un
+						recurso muy útil con la documentación de HTML es la 
+						<a href="https://developer.mozilla.org/es/docs/Web/HTML/Reference">Referencia HTML de MDN</a>.
+					</p>
+					<p>
+						Además, como se ha indicado anteriormente, todos los elementos deben tener bien definido
+						su rol, función y/o nombre. Esto puede lograrse con usar los elementos correctos de HTML,
+						y si con esto no basta, se pueden utilizar roles y labels de ARIA, para dejar en claro
+						todos estos datos para lectores de pantalla y otras tecnologías.
+					</p>
+					<h2 id="2">2. Atributos y semántica ARIA</h3>
+					<p>
+						<a href="https://www.w3.org/TR/wai-aria/">Accesible Rich Internet Applications (ARIA)</a>
+						es un framework que provee un conjunto de herramientas y atributos que mejoran el nivel
+						de accesibilidad de las páginas Web. Se pueden especificar diversos atributos a elementos
+						HTML que modifican la accesibilidad de la página, agregando características reconocibles
+						por tecnología de asistencia como lectores de pantalla.
 					</p>
 				</article>
 				<aside class="col-md-3 align-items-center bg-light" id="material-adicional">
@@ -163,7 +405,12 @@
 			</div>
 		</main>
 		<footer class="container">
-			<p>Referencias no incluidas en el material adicional pueden ir aquí.</p>
+			<p>
+				Elaborado por el Grupo Aranjuez para el curso de Computación y Sociedad del Instituto 
+				Tecnológico de Costa Rica, grupo 40, segundo semestre del 2021.
+				Autores: Agustín Brenes Umaña, Jesús Andrés Chavarría Delgado, Eduardo Josué Saborío Pérez,
+				Sebastián Quesada Velluti.
+			</p>
 		</footer>
     </body>
 </html>
