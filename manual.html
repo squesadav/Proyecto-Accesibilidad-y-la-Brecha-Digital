@@ -371,7 +371,61 @@
 						es un framework que provee un conjunto de herramientas y atributos que mejoran el nivel
 						de accesibilidad de las páginas Web. Se pueden especificar diversos atributos a elementos
 						HTML que modifican la accesibilidad de la página, agregando características reconocibles
-						por tecnología de asistencia como lectores de pantalla.
+						por tecnología de asistencia como lectores de pantalla. Se puede ver una introducción sencilla
+						de ARIA facilitada por Google en 
+						<a href="https://developers.google.com/web/fundamentals/accessibility/semantics-aria">Introduction to ARIA</a>.
+					</p>
+					<p>
+						Existen tres tipos de atributos de ARIA principales: de roles, de labels o etiquetas y de
+						relación.
+					</p>
+					<p>
+						HTML por defecto incluye una multitud de elementos cuyos roles son claros para todo
+						tipo de tecnología de asistencia. Entre ellos se encuentran <code>main</code>, 
+						<code>aside</code>, <code>footer</code> y demás. Sin embargo, no siempre será posible
+						encontrar un elemento correcto para todo componente personalizado. En estos casos se
+						deben usar roles de ARIA. En cualquier elemento de HTML se puede incluir el atributo
+						<code>role</code>, que puede ser "checkbox", "header", "button" y casi cualquier rol
+						que se quiera otorgar. De esta forma, todas las tecnologías lograrán entender la función
+						del componente.
+					</p>
+					<p>
+						También, se pueden usar <code>aria-label</code> para agregar algún texto descriptivo
+						del elemento. El texto que se escriba en esta etiqueta será por ejemplo dicho por
+						un lector de pantalla para que el usuario entienda de mejor forma qué significa.
+					</p>
+					<p>
+						Por último se pueden usar atributos de relación para identificar las relaciones
+						entre elementos, como padres e hijos de un menú con profundidad. Por ejemplo, el 
+						atributo <code>aria-owned</code> sirve para identificar el padre de algún elemento.
+						Además, el atributo <code>aria-describedby</code> identifica qué componente describe
+						el significado de un elemento.
+ 					</p>
+					<p>
+						Existen muchos otros atributos y semántica de ARIA para muchas funciones accesibles
+						de HTML y páginas Web. Se recomienda consultar los enlaces proporcionados previamente
+						para mayor información de ARIA.
+					</p>
+					<h2 id="3">3. Herramienta WAVE</h3>
+					<p>
+						La <a href="https://wave.webaim.org/api/">Herramienta Wave</a> es una aplicación Web
+						simple que sirve para evaluar el nivel de accesibilidad de otras páginas Web. Su
+						funcionamiento es sencillo: basta con ingresar el enlace a la página Web a analizar
+						y la aplicación se encargará de revisarla completamente, buscando que cumpla con los
+						principios de WCAG 2.1 y ARIA.
+					</p>
+					<p>
+						Una vez que se analice la página, se detallarán los resultados encontrados. Primero, 
+						se pueden observar los errores encontrados, que en general son incumplimientos
+						a los principios de WCAG 2.1. Se pueden ver detalles de dichos errores para obtener
+						consejos e ideas para arreglarlos. También se identificarán errores de contraste
+						en colores. También se analiza la estructura de la página para identificar si esta
+						es robusta y navegable.
+					</p>
+					<p>
+						Por último, se incluyen también características útiles y atributos ARIA que, aunque no
+						sean necesarios según WCAG 2.1, son de gran utilidad y en general mejoran la experiencia
+						para todo usuario que necesite de la accesibilidad, como discapacitados y adultos mayores.
 					</p>
 				</article>
 				<aside class="col-md-3 align-items-center bg-light" id="material-adicional">
